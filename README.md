@@ -45,3 +45,9 @@ If you try to start with anything except a PLACE command, the app will throw an 
 
 Check out `commands.txt` for all relevant test cases, including edge cases and invalid moves.
 ## Files
+Program.cs: The main entry point. Handles reading commands (from file or console), input validation, and program flow.
+Robot.cs: Contains the Robot class, which manages the robot’s position, direction, movement logic, and boundary checks.
+Direction.cs: Defines the Direction enum (NORTH, SOUTH, EAST, WEST) for robot orientation.
+commands.txt: Sample/test commands to demonstrate and verify the application’s behavior, including edge cases and invalid input.
+RobotSimulator.csproj: The .NET project file, specifying dependencies and build configuration.
+README.md: This documentation file, with setup instructions, usage, and file explanations.
