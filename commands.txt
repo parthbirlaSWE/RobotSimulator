@@ -1,0 +1,66 @@
+# Example 1(should ignore commands before PLACE)
+MOVE
+LEFT
+MOVE
+REPORT # Expected: (First command must be a place command.)
+
+# Example 2 (Place Command and report)
+PLACE 2,2,SOUTH
+REPORT # Expected: 2,2,SOUTH
+
+# Example 3 (Try Reset Place and change direction)
+PLACE 0,0,NORTH
+LEFT
+REPORT # Expected: 0,0,WEST
+
+# Example 4 (try moving off the table, should ignore invalid move)
+PLACE 4,4,NORTH
+MOVE
+REPORT # Expected: 4,4,NORTH
+
+# Example 5 (try moving off the table in all directions)
+PLACE 0,0,SOUTH
+MOVE
+REPORT # Expected: 0,0,SOUTH
+PLACE 0,0,WEST
+MOVE
+REPORT # Expected: 0,0,WEST
+PLACE 4,4,EAST
+MOVE
+REPORT # Expected: 4,4,EAST
+
+# Example 6 (replace PLACE mid-way, should reset position)
+PLACE 1,2,EAST
+MOVE
+MOVE
+LEFT
+MOVE
+REPORT # Expected: 3,3,NORTH
+
+# Example 7 (multiple PLACE commands, should reset position)
+PLACE 0,0,NORTH
+MOVE
+REPORT # Expected: 0,1,NORTH
+PLACE 3,3,EAST
+MOVE
+REPORT # Expected: 4,3,EAST
+
+# Example 9 (PLACE with invalid coordinates)
+PLACE 5,5,NORTH
+REPORT # Expected: (no output)
+PLACE -1,0,EAST
+REPORT # Expected: (no output)
+
+# Example 10 (PLACE with invalid direction)
+PLACE 1,1,NORTHEAST
+REPORT # Expected: (no output)
+PLACE 2,2,UP
+REPORT # Expected: (no output)
+
+# Example 12 (Multiple REPORTs in a row)
+PLACE 1,1,EAST
+REPORT # Expected: 1,1,EAST
+REPORT # Expected: 1,1,EAST
+MOVE
+REPORT # Expected: 2,1,EAST
+REPORT # Expected: 2,1,EAST
